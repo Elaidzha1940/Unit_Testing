@@ -81,4 +81,31 @@ final class UnitTestingViewModel_Tests: XCTestCase {
         XCTAssertEqual(vm.dataArray.count, 0)
     }
     
+    func test_UnitTestingViewModel_dataArray_shouldAddItems() {
+        // Given
+        let vm = UnitTestingViewModel(isPremium: Bool.random())
+        
+        // When
+        vm.addItem(item: "Hoo")
+        
+        // Then
+        XCTAssertTrue(!vm.dataArray.isEmpty)
+        XCTAssertFalse(vm.dataArray.isEmpty)
+        XCTAssertEqual(vm.dataArray.count, 1)
+        XCTAssertNotEqual(vm.dataArray.count, 0)
+        XCTAssertGreaterThan(vm.dataArray.count, 0)
+        
+    }
+    
+    func test_UnitTestingViewModel_dataArray_shouldNotAddBlankString() {
+        // Given
+        let vm = UnitTestingViewModel(isPremium: Bool.random())
+        
+        // When
+        vm.addItem(item: "")
+        
+        // Then
+        XCTAssertTrue(vm.dataArray.isEmpty)
+    }
+    
 }
