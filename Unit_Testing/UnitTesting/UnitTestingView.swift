@@ -17,14 +17,6 @@
 
 import SwiftUI
 
-class UnitTestingViewModel: ObservableObject {
-    @Published var isPremium: Bool
-    
-    init(isPremium: Bool) {
-        self.isPremium = isPremium
-    }
-}
-
 struct UnitTestingView: View {
     @StateObject private var vm: UnitTestingViewModel
     
