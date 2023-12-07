@@ -59,6 +59,7 @@ final class UnitTestingViewModel_Tests: XCTestCase {
     
     func test_UnitTestingViewModel_isPremium_shouldBeInjectedValue_hard() {
         for _ in 0..<10 {
+            // Given
             let userIsPremium: Bool = Bool.random()
             
             // When
@@ -67,6 +68,17 @@ final class UnitTestingViewModel_Tests: XCTestCase {
             // Then
             XCTAssertEqual(vm.isPremium, userIsPremium)
         }
+    }
+    
+    func test_UnitTestingViewModel_dataArray_shouldBeEmpty() {
+        // Given
+        
+        // When
+        let vm = UnitTestingViewModel(isPremium: Bool.random())
+        
+        // Then
+        XCTAssertTrue(vm.dataArray.isEmpty)
+        XCTAssertEqual(vm.dataArray.count, 0)
     }
     
 }
