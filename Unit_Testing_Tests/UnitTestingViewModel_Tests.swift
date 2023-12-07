@@ -19,11 +19,11 @@ final class UnitTestingViewModel_Tests: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-
+    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    
     func test_UnitTestingViewModel_isPremium_shouldBeTrue() {
         // Given
         let userIsPremium: Bool = true
@@ -45,5 +45,28 @@ final class UnitTestingViewModel_Tests: XCTestCase {
         // Then
         XCTAssertFalse(vm.isPremium)
     }
-
+    
+    func test_UnitTestingViewModel_isPremium_shouldBeInjectedValue() {
+        // Given
+        let userIsPremium: Bool = Bool.random()
+        
+        // When
+        let vm = UnitTestingViewModel(isPremium: userIsPremium)
+        
+        // Then
+        XCTAssertEqual(vm.isPremium, userIsPremium)
+    }
+    
+    func test_UnitTestingViewModel_isPremium_shouldBeInjectedValue_hard() {
+        for _ in 0..<10 {
+            let userIsPremium: Bool = Bool.random()
+            
+            // When
+            let vm = UnitTestingViewModel(isPremium: userIsPremium)
+            
+            // Then
+            XCTAssertEqual(vm.isPremium, userIsPremium)
+        }
+    }
+    
 }
