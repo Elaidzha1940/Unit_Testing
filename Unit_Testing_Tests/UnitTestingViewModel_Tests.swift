@@ -1,16 +1,21 @@
+//  /*
 //
-//  UnitTestingViewModel_Tests.swift
-//  Unit_Testing_Tests
+//  Project: Unit_Testing_Tests
+//  File: UnitTestingViewModel_Tests.swift
+//  Created by: Elaidzha Shchukin
+//  Date: 07.12.2023
 //
-//  Created by Elaidzha Shchukin on 07.12.2023.
-//
+//  */
 
 import XCTest
+@testable import Unit_Testing
+
+// Naming Srtucture: test_UnitOfWork_StateUnderTest_Expected
+// Naming Srtucture: test_[struct or class]_[variable or function]_[expected result]
+// Testing Srtucture: Given, When, Then
 
 final class UnitTestingViewModel_Tests: XCTestCase {
     
-    // Naming Srtucture: 
-
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -19,19 +24,26 @@ final class UnitTestingViewModel_Tests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func test_UnitTestingViewModel_isPremium_shouldBeTrue() {
+        // Given
+        let userIsPremium: Bool = true
+        
+        // When
+        let vm = UnitTestingViewModel(isPremium: userIsPremium)
+        
+        // Then
+        XCTAssertTrue(vm.isPremium)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func test_UnitTestingViewModel_isPremium_shouldBeFalse() {
+        // Given
+        let userIsPremium: Bool = false
+        
+        // When
+        let vm = UnitTestingViewModel(isPremium: userIsPremium)
+        
+        // Then
+        XCTAssertFalse(vm.isPremium)
     }
 
 }
