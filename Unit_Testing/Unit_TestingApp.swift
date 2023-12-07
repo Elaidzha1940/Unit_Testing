@@ -1,9 +1,11 @@
+//  /*
 //
-//  Unit_TestingApp.swift
-//  Unit_Testing
+//  Project: Unit_Testing
+//  File: Unit_TestingApp.swift
+//  Created by: Elaidzha Shchukin
+//  Date: 07.12.2023
 //
-//  Created by Elaidzha Shchukin on 07.12.2023.
-//
+//  */
 
 import SwiftUI
 
@@ -11,7 +13,7 @@ import SwiftUI
 struct Unit_TestingApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            UnitTestingView(isPremium: true)
         }
     }
 }
