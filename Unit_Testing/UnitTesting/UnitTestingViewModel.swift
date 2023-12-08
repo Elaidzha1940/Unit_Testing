@@ -9,9 +9,11 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 protocol NewDataServiceProtocol {
-    
+    func donwloadItemsWithEscaping(completion: @escaping (_ items: [String]) -> ())
+    func donwloadItemsWithCombine() -> AnyPublisher<[String], Error>
 }
 
 class NewMockDataService: NewDataServiceProtocol {
@@ -28,6 +30,17 @@ class NewMockDataService: NewDataServiceProtocol {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             completion(self.items)
         }
+    }
+    
+    func donwloadItemsWithCombine() -> AnyPublisher<[String], Error> {
+        Just(items)
+            .tryMap({ publishedItems in
+                guard !publishedItems.isEmpty else {
+                    throw URLError(.badServerResponse)
+                }
+                return publishedItems
+            })
+            .eraseToAnyPublisher()
     }
 }
 
