@@ -69,6 +69,5 @@ class UnitTestingViewModel: ObservableObject {
                 self?.dataArray = returnedItems
             }
             .store(in: &cancellables)
-
     }
 }

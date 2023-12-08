@@ -7,9 +7,10 @@
 //
 //  */
 
+// UNIT Test
 /*
  Unit Tests
- - test the business logic in the app
+ - tests the business logic in the app
  
  UI Tests
  - tests the UI of app

@@ -91,15 +91,23 @@ final class NewMockDataService_Tests: XCTestCase {
         
         // When
         var items: [String] = []
-        let expectation = XCTestExpectation()
+        let expectation = XCTestExpectation(description: "Does throw an error.")
+        let expectation2 = XCTestExpectation(description: "Does throw an URLerror.badServerResponse")
         
         dataSevice.donwloadItemsWithCombine()
             .sink { completion in
                 switch completion {
                 case .finished:
                     XCTFail()
-                case .failure:
+                case .failure(let error):
                     expectation.fulfill()
+                    
+                    //let urlError = error as? URLError
+                    //XCTAssertEqual(urlError, URLError(.badServerResponse))
+                    
+                    if error as? URLError == URLError(.badServerResponse) {
+                        expectation2.fulfill()
+                    }
                 }
             } receiveValue: { returnedItems in
                 items  = returnedItems
@@ -107,7 +115,7 @@ final class NewMockDataService_Tests: XCTestCase {
             .store(in: &cancellables)
         
         // Then
-        wait(for: [expectation], timeout: 5)
+        wait(for: [expectation, expectation2], timeout: 5)
         XCTAssertEqual(items.count, dataSevice.items.count)
     }
 }
