@@ -86,12 +86,15 @@ final class UnitTestingViewModel_Tests: XCTestCase {
         let vm = UnitTestingViewModel(isPremium: Bool.random())
         
         // When
-        vm.addItem(item: "Hoo")
+        let loopCount: Int = Int.random(in: 1..<100)
+        for _ in 0..<loopCount {
+            vm.addItem(item: UUID().uuidString)
+        }
         
         // Then
         XCTAssertTrue(!vm.dataArray.isEmpty)
         XCTAssertFalse(vm.dataArray.isEmpty)
-        XCTAssertEqual(vm.dataArray.count, 1)
+        XCTAssertEqual(vm.dataArray.count, loopCount)
         XCTAssertNotEqual(vm.dataArray.count, 0)
         XCTAssertGreaterThan(vm.dataArray.count, 0)
         
@@ -106,6 +109,16 @@ final class UnitTestingViewModel_Tests: XCTestCase {
         
         // Then
         XCTAssertTrue(vm.dataArray.isEmpty)
+    }
+    
+    func test_UnitTestingViewModel_selectedItem_shouldStartAsNil() {
+        // Given
+        
+        // When
+        let vm = UnitTestingViewModel(isPremium: Bool.random())
+
+        // Then
+        XCTAssertTrue(vm.selectedItem == nil)
     }
     
 }
