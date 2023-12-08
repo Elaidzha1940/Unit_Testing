@@ -10,6 +10,27 @@
 import Foundation
 import SwiftUI
 
+protocol NewDataServiceProtocol {
+    
+}
+
+class NewMockDataService: NewDataServiceProtocol {
+    
+    let items: [String]
+    
+    init(items: [String]?) {
+        self.items = items ?? [
+        "White", "Black", "Blue"
+        ]
+    }
+    
+    func donwloadItemsWithEscaping(completion: @escaping (_ items: [String]) -> ()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            completion(self.items)
+        }
+    }
+}
+
 class UnitTestingViewModel: ObservableObject {
     @Published var isPremium: Bool
     @Published var dataArray: [String] = []
