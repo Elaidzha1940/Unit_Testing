@@ -152,4 +152,38 @@ final class UnitTestingViewModel_Tests: XCTestCase {
         XCTAssertEqual(vm.selectedItem, newItem)
     }
     
+    func test_UnitTestingViewModel_selectedItem_shouldBeSelected_hard() {
+        // Given
+        let vm = UnitTestingViewModel(isPremium: Bool.random())
+        
+        // When
+        let loopCount: Int = Int.random(in: 1..<100)
+        var itemsArray: [String] = []
+        
+        for _ in 0..<loopCount {
+            let newItem = UUID().uuidString
+            vm.addItem(item: newItem)
+            itemsArray.append(newItem)
+        }
+        
+        let randomItem = itemsArray.randomElement() ?? ""
+        vm.selectItem(item: randomItem)
+        // Then
+        XCTAssertNotNil(vm.selectedItem)
+        XCTAssertEqual(vm.selectedItem, randomItem)
+    }
+    
+    func test_UnitTestingViewModel_saveItem_shouldThrowError_noData() {
+        // Given
+        let vm = UnitTestingViewModel(isPremium: Bool.random())
+        
+        // When
+        
+        
+        // Then
+        XCTAssertThrowsError(try vm.saveItem(item: UUID().uuidString))
+    }
+
+
+    
 }
