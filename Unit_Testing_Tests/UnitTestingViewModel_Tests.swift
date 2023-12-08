@@ -8,6 +8,7 @@
 //  */
 
 import XCTest
+import Combine
 @testable import Unit_Testing
 
 // Naming Srtucture: test_UnitOfWork_StateUnderTest_Expected
@@ -17,6 +18,8 @@ import XCTest
 final class UnitTestingViewModel_Tests: XCTestCase {
     
     var viewModel: UnitTestingViewModel?
+    var cancellables = Set<AnyCancellable>()
+    
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -266,6 +269,48 @@ final class UnitTestingViewModel_Tests: XCTestCase {
         } catch {
             XCTFail()
         }
+    }
+    
+    func test_UnitTestingViewModel_donwloadWithEscaping_shouldReturnItems() {
+        // Given
+        let vm = UnitTestingViewModel(isPremium: Bool.random())
+        
+        // When
+        let expectation = XCTestExpectation(description: "Should return after 3 seconds.")
+        
+        vm.$dataArray
+            .dropFirst()
+            .sink { returnedItems in
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        
+        vm.donwloadWithEscaping()
+        
+        // Then
+        wait(for: [expectation], timeout: 5)
+        XCTAssertGreaterThan(vm.dataArray.count, 0)
+    }
+    
+    func test_UnitTestingViewModel_donwloadWithEscaping_shouldReturnItems() {
+        // Given
+        let vm = UnitTestingViewModel(isPremium: Bool.random())
+        
+        // When
+        let expectation = XCTestExpectation(description: "Should return after 3 seconds.")
+        
+        vm.$dataArray
+            .dropFirst()
+            .sink { returnedItems in
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        
+        vm.donwloadWithEscaping()
+        
+        // Then
+        wait(for: [expectation], timeout: 5)
+        XCTAssertGreaterThan(vm.dataArray.count, 0)
     }
     
 }
