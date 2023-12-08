@@ -20,7 +20,6 @@ final class UnitTestingViewModel_Tests: XCTestCase {
     var viewModel: UnitTestingViewModel?
     var cancellables = Set<AnyCancellable>()
     
-    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         viewModel = UnitTestingViewModel(isPremium: Bool.random())
@@ -292,12 +291,12 @@ final class UnitTestingViewModel_Tests: XCTestCase {
         XCTAssertGreaterThan(vm.dataArray.count, 0)
     }
     
-    func test_UnitTestingViewModel_donwloadWithEscaping_shouldReturnItems() {
+    func test_UnitTestingViewModel_donwloadWithCombine_shouldReturnItems() {
         // Given
         let vm = UnitTestingViewModel(isPremium: Bool.random())
         
         // When
-        let expectation = XCTestExpectation(description: "Should return after 3 seconds.")
+        let expectation = XCTestExpectation(description: "Should return after a second")
         
         vm.$dataArray
             .dropFirst()
@@ -306,7 +305,7 @@ final class UnitTestingViewModel_Tests: XCTestCase {
             }
             .store(in: &cancellables)
         
-        vm.donwloadWithEscaping()
+        vm.donwloadWithCombine()
         
         // Then
         wait(for: [expectation], timeout: 5)

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E42D26D92B2366BF0085E71B /* NewMockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42D26D82B2366BF0085E71B /* NewMockDataService.swift */; };
+		E42D26DB2B2367580085E71B /* NewMockDataService_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42D26DA2B2367580085E71B /* NewMockDataService_Tests.swift */; };
 		E4E1FE7D2B21BFFA00F00725 /* Unit_TestingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E1FE7C2B21BFFA00F00725 /* Unit_TestingApp.swift */; };
 		E4E1FE812B21BFFB00F00725 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4E1FE802B21BFFB00F00725 /* Assets.xcassets */; };
 		E4E1FE842B21BFFB00F00725 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4E1FE832B21BFFB00F00725 /* Preview Assets.xcassets */; };
@@ -27,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E42D26D82B2366BF0085E71B /* NewMockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMockDataService.swift; sourceTree = "<group>"; };
+		E42D26DA2B2367580085E71B /* NewMockDataService_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMockDataService_Tests.swift; sourceTree = "<group>"; };
 		E4E1FE792B21BFFA00F00725 /* Unit_Testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unit_Testing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4E1FE7C2B21BFFA00F00725 /* Unit_TestingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit_TestingApp.swift; sourceTree = "<group>"; };
 		E4E1FE802B21BFFB00F00725 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 			children = (
 				E4E1FE8D2B21FFA800F00725 /* UnitTestingView.swift */,
 				E4E1FE8F2B22037800F00725 /* UnitTestingViewModel.swift */,
+				E42D26D82B2366BF0085E71B /* NewMockDataService.swift */,
 			);
 			path = UnitTesting;
 			sourceTree = "<group>";
@@ -107,6 +112,7 @@
 			children = (
 				E4E1FE972B2204E000F00725 /* Unit_Testing_Tests.swift */,
 				E4E1FE9E2B22350E00F00725 /* UnitTestingViewModel_Tests.swift */,
+				E42D26DA2B2367580085E71B /* NewMockDataService_Tests.swift */,
 			);
 			path = Unit_Testing_Tests;
 			sourceTree = "<group>";
@@ -213,6 +219,7 @@
 			files = (
 				E4E1FE902B22037800F00725 /* UnitTestingViewModel.swift in Sources */,
 				E4E1FE8E2B21FFA800F00725 /* UnitTestingView.swift in Sources */,
+				E42D26D92B2366BF0085E71B /* NewMockDataService.swift in Sources */,
 				E4E1FE7D2B21BFFA00F00725 /* Unit_TestingApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,6 +230,7 @@
 			files = (
 				E4E1FE9F2B22350E00F00725 /* UnitTestingViewModel_Tests.swift in Sources */,
 				E4E1FE982B2204E000F00725 /* Unit_Testing_Tests.swift in Sources */,
+				E42D26DB2B2367580085E71B /* NewMockDataService_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
