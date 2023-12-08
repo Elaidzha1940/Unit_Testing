@@ -116,9 +116,40 @@ final class UnitTestingViewModel_Tests: XCTestCase {
         
         // When
         let vm = UnitTestingViewModel(isPremium: Bool.random())
-
+        
         // Then
         XCTAssertTrue(vm.selectedItem == nil)
+        XCTAssertNil(vm.selectedItem)
+    }
+    
+    func test_UnitTestingViewModel_selectedItem_shouldBeNilWhenSelectingInvalidItemStartAsNil() {
+        // Given
+        let vm = UnitTestingViewModel(isPremium: Bool.random())
+        
+        // When
+        // select valid item
+        let newItem = UUID().uuidString
+        vm.addItem(item: newItem)
+        vm.selectItem(item: newItem)
+        
+        // select invalid item
+        vm.selectItem(item: UUID().uuidString)
+        
+        // Then
+        XCTAssertNil(vm.selectedItem)
+    }
+    
+    func test_UnitTestingViewModel_selectedItem_shouldBeSelected() {
+        // Given
+        let vm = UnitTestingViewModel(isPremium: Bool.random())
+        
+        // When
+        let newItem = UUID().uuidString
+        vm.addItem(item: newItem)
+        vm.selectItem(item: newItem)
+        // Then
+        XCTAssertNotNil(vm.selectedItem)
+        XCTAssertEqual(vm.selectedItem, newItem)
     }
     
 }
