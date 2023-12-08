@@ -49,8 +49,11 @@ class UnitTestingViewModel: ObservableObject {
     @Published var dataArray: [String] = []
     @Published var selectedItem: String? = nil
     
-    init(isPremium: Bool) {
+    let dataService: NewDataServiceProtocol
+    
+    init(isPremium: Bool, dataService: NewDataServiceProtocol = NewMockDataService(items: nil)) {
         self.isPremium = isPremium
+        self.dataService = dataService
     }
     
     func addItem(item: String) {
@@ -81,5 +84,11 @@ class UnitTestingViewModel: ObservableObject {
     enum DataError: LocalizedError {
         case noData
         case itemNotFound
+    }
+    
+    func donwloadWithEscaping() {
+        dataService.donwloadItemsWithEscaping { returnedItems in
+            self.dataArray = returnedItems
+        }
     }
 }
